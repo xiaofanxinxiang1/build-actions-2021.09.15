@@ -7,10 +7,10 @@
 
 
 cat >$NETIP <<-EOF
-uci set network.lan.ipaddr='192.168.2.2'                                    # IPv4 地址(openwrt后台地址)
+uci set network.lan.ipaddr='10.10.1.27'                                    # IPv4 地址(openwrt后台地址)
 uci set network.lan.netmask='255.255.255.0'                                 # IPv4 子网掩码
-uci set network.lan.gateway='192.168.2.1'                                   # IPv4 网关
-uci set network.lan.broadcast='192.168.2.255'                               # IPv4 广播
+uci set network.lan.gateway='10.10.1.1'                                   # IPv4 网关
+uci set network.lan.broadcast='10.10.1.255'                               # IPv4 广播
 uci set network.lan.dns='223.5.5.5 114.114.114.114'                         # DNS(多个DNS要用空格分开)
 uci set network.lan.delegate='0'                                            # 去掉LAN口使用内置的 IPv6 管理
 uci commit network                                                          # 不要删除跟注释,除非上面全部删除或注释掉了
@@ -29,6 +29,20 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                          
 
 # K3专用，编译K3的时候只会出K3固件
 #sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES += phicomm_k3|' target/linux/bcm53xx/image/Makefile
+
+#git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
+#git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
+#git clone https://github.com/jerrykuku/luci-app-vssr package/luci-app-vssr
+#git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
+#git clone https://github.com/garypang13/smartdns-le package/smartdns-le
+#git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
+#svn co https://github.com/garypang13/openwrt-packages/trunk/smartdns
+#svn co https://github.com/garypang13/openwrt-packages/trunk/tcping
+#svn co https://github.com/garypang13/openwrt-packages/trunk/lua-maxminddb
+#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
+#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
+
 
 # 修改插件名字
 sed -i 's/"aMule设置"/"电驴下载"/g' `grep "aMule设置" -rl ./`

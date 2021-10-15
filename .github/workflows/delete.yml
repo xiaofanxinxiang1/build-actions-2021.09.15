@@ -22,7 +22,7 @@ on:
       older-actions:
         description: '清理Actions空间'
         required: false
-        default: 'true'
+        default: 'false'
       older-releases:
         description: '删除releases'
         required: false
